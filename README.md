@@ -34,6 +34,45 @@ gpio_set_level(RS_PIN, 1);
 vTaskDelay(100 / portTICK_PERIOD_MS);
 ```
 
+## Usage
+
+Clone the repo
+```
+git clone 
+```
+
+Copy and paste the header file `lcd_1602a.h` to your project directory next to your main file or where ever your header files live.
+
+Then import in your main
+
+```
+#include "lcd_1602a.h"
+```
+
+Define your pins
+```
+int RS_PIN = 15;
+int EN_PIN = 17;
+int D4_PIN = 2;
+int D5_PIN = 0;
+int D6_PIN = 4;
+int D7_PIN = 16;
+```
+
+Then inside your code, init the lcd with the pins defined, and set to write mode
+```
+init_lcd(RS_PIN, EN_PIN, D4_PIN, D5_PIN, D6_PIN, D7_PIN);
+
+// set RS high for write mode
+gpio_set_level(RS_PIN, 1);
+vTaskDelay(100 / portTICK_PERIOD_MS);
+```
+
+Finally, print to your lcd
+```
+printToLcd("Hello World!");
+```
+
 ## Testing
 
 Use at your own risk, this module was intended for test and learning only.
